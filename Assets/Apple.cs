@@ -6,21 +6,12 @@ public class Apple : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.enabled = true;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject.name);
-        if(other.gameObject.tag == "Player")
-        {
-            Destroy(this);
-        }
-    }
+
+
     private void OnDestroy() {
         audioSource.Play();
     }

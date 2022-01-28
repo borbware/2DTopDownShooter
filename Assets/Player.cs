@@ -3,8 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] Animator anim;
+    [SerializeField] GameObject appleUI;
     [SerializeField] int speed = 4;
     SpriteRenderer sr; 
+    float apples;
     void Start()
     {
         sr = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
@@ -37,4 +39,15 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(PlayerInput.x, PlayerInput.y, 0f) * Time.deltaTime * speed;
 
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.gameObject.tag);
+        if(other.gameObject.tag == "Collectible")
+        {
+            Destroy(other.gameObject);
+            apples += 1;
+            appleUI.GetComponent<UnityEngine.UI.Text>().text = apples.ToString();
+        }
+    }
+
 }

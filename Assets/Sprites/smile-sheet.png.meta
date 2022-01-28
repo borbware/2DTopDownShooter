@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: 6219483378906018247
     second: smile-sheet_9
+  - first:
+      213: 6457896520670467597
+    second: smile-sheet_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -338,6 +341,27 @@ TextureImporter:
       bones: []
       spriteID: 7c1b32e4e2b005650800000000000000
       internalID: 6219483378906018247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smile-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d065bce8bae0f9950800000000000000
+      internalID: 6457896520670467597
       vertices: []
       indices: 
       edges: []

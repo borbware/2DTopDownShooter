@@ -1500,6 +1500,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646137007}
   m_Enabled: 1
+--- !u!114 &1646137012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646137007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cf2114d1042b4aad553a948ba8e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 549104953}
 --- !u!1001 &1670307531
 PrefabInstance:
   m_ObjectHideFlags: 0

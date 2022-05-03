@@ -52,14 +52,12 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag == "Collectible")
         {
             Destroy(other.gameObject);
             AddApples(1);
         } else if (!iFrames && other.gameObject.tag == "Enemy")
         {
-            Debug.Log("oisko");
             AddApples(-1);
             iFrames = true;
             Invoke("StopIFrames",1.0f);

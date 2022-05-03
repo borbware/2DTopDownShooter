@@ -7,6 +7,7 @@ public class MoveEnemy : MonoBehaviour
     AIPath _aipath;
     AIDestinationSetter _aiDestinationSetter;
     public GameObject[] targets = new GameObject[2];
+    int targetIndex;
     void Start()
     {
         _aipath = GetComponent<AIPath>();
@@ -28,11 +29,36 @@ public class MoveEnemy : MonoBehaviour
     void Update()
     {
         // FollowIfClose();
-        if (targets[0] != null && Vector2.Distance(
-            targets[0].transform.position, transform.position)
-        < 5.0f )
-            _aiDestinationSetter.target = targets[0].transform;
-        else if (targets[1]!= null)
-            _aiDestinationSetter.target = targets[1].transform;
+        if (_player != null 
+        && Vector2.Distance(_player.transform.position, transform.position) < 5.0f 
+        && _aiDestinationSetter != null)
+            _aiDestinationSetter.target = _player.transform;
+        else if (
+            targets.Length > 0 
+            && _aiDestinationSetter != null
+            && (
+                _aiDestinationSetter.target == null 
+                || _aiDestinationSetter.target == _player.transform
+            ))
+        {
+            targetIndex = 0;
+            _aiDestinationSetter.target = targets[targetIndex].transform;
+        }
     }
+    public void TargetIsReached()
+    {
+        Invoke("GoToNextTarget",1.0f);
+    }
+    public void GoToNextTarget()
+    {
+        if (_aiDestinationSetter.target != _player.transform)
+        {
+            targetIndex += 1;
+            targetIndex = targetIndex % targets.Length;
+            // if (targetIndex == targets.Length) // same thing in two lines
+            //     targetIndex = 0;
+            _aiDestinationSetter.target = targets[targetIndex].transform;
+        }
+    }
+    
 }

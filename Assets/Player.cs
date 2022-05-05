@@ -5,15 +5,17 @@ public class Player : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] GameObject appleUI;
     [SerializeField] int speed = 4;
-    SpriteRenderer sr; 
+    SpriteRenderer _spriteRenderer; 
     Rigidbody2D _rigidBody;
+    AlongWallMovement _alongWall;
     Vector2 PlayerInput;
     bool iFrames = false;
     float apples;
     void Start()
     {
-        sr = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
+        _spriteRenderer = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
         // _rigidBody = GetComponent<Rigidbody2D>();
+        _alongWall = GetComponent<AlongWallMovement>();
     }
     void Update()
     {
@@ -23,6 +25,14 @@ public class Player : MonoBehaviour
 				Input.GetAxisRaw("Vertical")
 			),
 		1f);
+
+        if (_alongWall.wallNormal != null && _alongWall.wallNormal.SqrMagnitude() > 0f)
+        {
+            Vector3 temp = Vector3.Cross(_alongWall.wallNormal, PlayerInput);
+            PlayerInput = (Vector2)Vector3.Cross(temp, _alongWall.wallNormal);
+        }
+
+
         anim.SetFloat("X",PlayerInput.x);
         anim.SetFloat("Y",PlayerInput.y);
         if (PlayerInput.magnitude > 0f)
@@ -30,9 +40,9 @@ public class Player : MonoBehaviour
             anim.SetFloat("Last_X",PlayerInput.x);
             anim.SetFloat("Last_Y",PlayerInput.y);
             if (PlayerInput.x > 0)
-                sr.flipX = false;
+                _spriteRenderer.flipX = false;
             else
-                sr.flipX = true;
+                _spriteRenderer.flipX = true;
             anim.SetTrigger("StartWalking");
             // anim.Play("player_walk");
         } else {
@@ -40,9 +50,9 @@ public class Player : MonoBehaviour
         }
         if (iFrames && Time.time % 0.2f > 0.1f)
         {
-            sr.enabled = false;
+            _spriteRenderer.enabled = false;
         } else {
-            sr.enabled = true;
+            _spriteRenderer.enabled = true;
         }
         transform.position += new Vector3(PlayerInput.x, PlayerInput.y, 0f) * Time.deltaTime * speed;
 
@@ -74,5 +84,6 @@ public class Player : MonoBehaviour
     {
         iFrames = false;
     }
+
 
 }

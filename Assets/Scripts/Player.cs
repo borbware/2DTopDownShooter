@@ -3,14 +3,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] GameObject appleUI;
     [SerializeField] int speed = 4;
     SpriteRenderer _spriteRenderer; 
     Rigidbody2D _rigidBody;
     AlongWallMovement _alongWall;
     Vector2 PlayerInput;
     bool iFrames = false;
-    float apples;
     void Start()
     {
         _spriteRenderer = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
@@ -65,21 +63,14 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "Collectible")
         {
             Destroy(other.gameObject);
-            AddApples(1);
+            GameManager.instance.AddApples(1);
         } else if (!iFrames && other.gameObject.tag == "Enemy")
         {
-            AddApples(-1);
+            GameManager.instance.AddApples(-1);
             iFrames = true;
             Invoke("StopIFrames",1.0f);
         }
     }
-    private void AddApples(int apple)
-    {
-            apples += apple;
-            apples = Mathf.Max(apples, 0);
-            appleUI.GetComponent<UnityEngine.UI.Text>().text = apples.ToString();
-    }
-
     private void StopIFrames()
     {
         iFrames = false;

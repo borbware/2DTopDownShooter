@@ -244,6 +244,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2034503770, guid: 12a59549c9e8a6d48b8482ebf61946ad, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 926756047}
+    - target: {fileID: 2034503770, guid: 12a59549c9e8a6d48b8482ebf61946ad, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 926756047}
     - target: {fileID: 4083049226352962787, guid: 12a59549c9e8a6d48b8482ebf61946ad, type: 3}
       propertyPath: m_Name
       value: Pixel Perfect Camera
@@ -3894,7 +3902,6 @@ GameObject:
   - component: {fileID: 1698212742}
   - component: {fileID: 1698212741}
   - component: {fileID: 1698212740}
-  - component: {fileID: 1698212744}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -3980,7 +3987,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 5778961287088506303, guid: 0a3ddf0d0207ee34bb5c29c43af299a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4006,20 +4013,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1698212744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698212739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 076635d2398e9b24182eae2eba855336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apples: 0
-  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1808770532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4077,21 +4070,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e31485bfcb80064aa9707fc59146643, type: 3}
---- !u!1 &2034503766 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4083049226352962787, guid: 12a59549c9e8a6d48b8482ebf61946ad, type: 3}
-  m_PrefabInstance: {fileID: 214334230}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2034503770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034503766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5cf2114d1042b4aad553a948ba8e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 926756047}

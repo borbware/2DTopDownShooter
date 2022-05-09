@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        appleText.text = GameManager.instance.apples.ToString();
+        if (GameManager.instance != null)
+            appleText.text = GameManager.instance.apples.ToString();
     }
 }

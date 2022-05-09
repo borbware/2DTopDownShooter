@@ -13,6 +13,7 @@ public class Apple : MonoBehaviour
 
 
     private void OnDestroy() {
-        audioSource.Play();
+        if (audioSource.enabled)
+            audioSource.Play();
     }
 }

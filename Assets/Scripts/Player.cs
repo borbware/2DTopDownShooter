@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
     }
     void SetSpawnPosition()
     {
-        if (GameManager.instance.playerPosition != Vector3.zero)
+        if (GameManager.instance != null
+        && GameManager.instance.playerPosition != Vector3.zero)
         {
             transform.position = GameManager.instance.playerPosition;
             GameManager.instance.playerPosition = Vector3.zero;

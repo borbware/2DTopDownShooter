@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     [SerializeField] Animator anim;
     [SerializeField] int speed = 4;
     SpriteRenderer _spriteRenderer; 
@@ -14,6 +17,41 @@ public class Player : MonoBehaviour
         _spriteRenderer = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
         // _rigidBody = GetComponent<Rigidbody2D>();
         _alongWall = GetComponent<AlongWallMovement>();
+
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        SetSpawnPosition();
+        SetCameraToFollow();
+    }
+    void SetSpawnPosition()
+    {
+        if (GameManager.instance.playerPosition != Vector3.zero)
+        {
+            transform.position = GameManager.instance.playerPosition;
+            GameManager.instance.playerPosition = Vector3.zero;
+        }
+    }
+    void SetCameraToFollow()
+    {
+        Debug.Log("asfd");
+        var camera = GameObject.FindGameObjectWithTag("MainCamera");
+        var follow = camera.GetComponent<FollowPlayer>();
+        follow.target = gameObject;
+        follow.ExactFollow();
     }
     void Update()
     {
@@ -24,7 +62,9 @@ public class Player : MonoBehaviour
 			),
 		1f);
 
-        if (_alongWall.wallNormal != null && _alongWall.wallNormal.SqrMagnitude() > 0f)
+        if (_alongWall != null 
+        && _alongWall.wallNormal != null 
+        && _alongWall.wallNormal.SqrMagnitude() > 0f)
         {
             Vector3 temp = Vector3.Cross(_alongWall.wallNormal, PlayerInput);
             PlayerInput = (Vector2)Vector3.Cross(temp, _alongWall.wallNormal);

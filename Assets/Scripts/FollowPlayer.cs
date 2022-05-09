@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    void ExactFollow()
+    public void ExactFollow()
     {
         transform.position = new Vector3(
-            _player.transform.position.x,
-            _player.transform.position.y,
+            target.transform.position.x,
+            target.transform.position.y,
             -10
         );
     }
@@ -22,8 +22,8 @@ public class FollowPlayer : MonoBehaviour
         transform.position = Vector3.Lerp(
             transform.position,
             new Vector3(
-                _player.transform.position.x,
-                _player.transform.position.y,
+                target.transform.position.x,
+                target.transform.position.y,
                 -10
             ),
             Time.deltaTime * 2);

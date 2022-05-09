@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7727507886011140512}
   - component: {fileID: 7727507886011140519}
   - component: {fileID: 7727507886011140513}
-  - component: {fileID: 7727507886011140515}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -74,7 +73,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7727507884464854783}
-  appleUI: {fileID: 0}
   speed: 4
 --- !u!50 &7727507886011140513
 Rigidbody2D:
@@ -97,20 +95,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7727507886011140515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727507886011140516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec647b46f9d66e4a9cdf51dbcd55a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTouchingWall: 0
-  wallNormal: {x: 0, y: 0}
 --- !u!1001 &6150390370253317419
 PrefabInstance:
   m_ObjectHideFlags: 0

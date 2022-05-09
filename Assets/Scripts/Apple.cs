@@ -9,6 +9,8 @@ public class Apple : MonoBehaviour
         audioSource.enabled = true;
     }
 
+    // Update is a function that is called once per frame
+
     private void OnDestroy() {
         if (audioSource.enabled)
             audioSource.Play();

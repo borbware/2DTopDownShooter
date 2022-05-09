@@ -23,7 +23,7 @@ public class EnemyPath : MonoBehaviour
     }
     void UpdatePath()
     {
-        if (_seeker.IsDone())
+        if (_seeker.IsDone() && target != null)
             _seeker.StartPath(transform.position, target.position, OnPathCompleted);
     }
     void OnPathCompleted(Path p)

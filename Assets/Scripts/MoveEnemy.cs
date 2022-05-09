@@ -29,7 +29,8 @@ public class MoveEnemy : MonoBehaviour
         && Vector2.Distance(_player.transform.position, transform.position) < 5.0f)
             _enemypath.target = _player.transform;
         else if (
-            targets.Length > 0 
+            _player != null
+            && targets.Length > 0 
             && (
                 _enemypath.target == null 
                 || _enemypath.target == _player.transform

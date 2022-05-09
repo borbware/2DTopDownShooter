@@ -19,6 +19,8 @@ public class FollowPlayer : MonoBehaviour
 
     void LerpFollow()
     {
+        if (target == null)
+            return;
         transform.position = Vector3.Lerp(
             transform.position,
             new Vector3(

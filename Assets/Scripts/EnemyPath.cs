@@ -28,7 +28,6 @@ public class EnemyPath : MonoBehaviour
     }
     void OnPathCompleted(Path p)
     {
-        Debug.Log("Completed!");
         if (!p.error)
         {
             currentPath = p;

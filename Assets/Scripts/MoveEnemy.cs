@@ -42,7 +42,6 @@ public class MoveEnemy : MonoBehaviour
     }
     public void TargetIsReached()
     {
-        Debug.Log("Reached");
         Invoke("GoToNextTarget",1.0f);
     }
     public void GoToNextTarget()

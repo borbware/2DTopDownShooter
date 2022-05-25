@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: textSpeed
       value: 0.06
       objectReference: {fileID: 0}
+    - target: {fileID: 8813720225208879077, guid: c116f93c5332d81498bec413452c0ec6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 31.900024
+      objectReference: {fileID: 0}
     - target: {fileID: 8813720226834297719, guid: c116f93c5332d81498bec413452c0ec6, type: 3}
       propertyPath: m_Name
       value: ui

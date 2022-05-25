@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] Animator anim;
     [SerializeField] int speed = 4;
+    [SerializeField] ParticleSystem dustParticles;
     SpriteRenderer _spriteRenderer; 
     Rigidbody2D _rigidBody;
     AlongWallMovement _alongWall;
@@ -71,6 +72,24 @@ public class Player : MonoBehaviour
 		1f);
         PlayerAction = Input.GetButtonDown("Fire1");
 
+        if (dustParticles.isStopped && PlayerMove.magnitude > 0.3)
+        {
+            dustParticles.Play();
+            Debug.Log("start");
+        }
+        if (dustParticles.isPlaying && PlayerMove.magnitude < 0.1)
+        {
+            dustParticles.Stop();
+            Debug.Log("stop");
+        }
+        var shape = dustParticles.shape;
+        shape.rotation = new Vector3(
+            0, 0, Mathf.Atan2(PlayerMove.y, PlayerMove.x) * Mathf.Rad2Deg - 15);
+        var main = dustParticles.main;
+        main.startSpeed = 2 * PlayerMove.magnitude;
+        Debug.Log(shape.rotation);
+
+
         if (playerState == PlayerState.Moving)
         {
             if (_alongWall != null 
@@ -104,28 +123,5 @@ public class Player : MonoBehaviour
             }
             transform.position += new Vector3(PlayerMove.x, PlayerMove.y, 0f) * Time.deltaTime * speed;
         }
-
     }
-    private void FixedUpdate() {
-        // _rigidBody.AddForce(new Vector3(PlayerInput.x, PlayerInput.y, 0f) * Time.deltaTime * speed);
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "Collectible")
-        {
-            Destroy(other.gameObject);
-            GameManager.instance.AddApples(1);
-        } else if (!iFrames && other.gameObject.tag == "Enemy")
-        {
-            GameManager.instance.AddApples(-1);
-            iFrames = true;
-            Invoke("StopIFrames",1.0f);
-        }
-    }
-    private void StopIFrames()
-    {
-        iFrames = false;
-    }
-
-
 }
